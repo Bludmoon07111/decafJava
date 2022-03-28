@@ -1,0 +1,222 @@
+
+package start;
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+import java.io.*;
+
+public class Profiler4 implements Serializable{
+Profiler4(){
+
+JPanel panel1 = new JPanel();
+JPanel panel2 = new JPanel();
+JPanel panel3 = new JPanel();
+JPanel panel4 = new JPanel();
+JPanel panel5 = new JPanel();
+JPanel panel6 = new JPanel();
+JPanel panel7 = new JPanel();
+JPanel panel8 = new JPanel();
+JPanel panel9 = new JPanel();
+JPanel panel10 = new JPanel();
+JPanel panel11 = new JPanel();
+JPanel panel12 = new JPanel();
+JPanel panel13 = new JPanel();
+JPanel panel14 = new JPanel();
+JPanel panel15 = new JPanel();
+JPanel panel16 = new JPanel();
+JPanel panelA = new JPanel();
+JPanel panelB= new JPanel();
+JPanel panelC= new JPanel();
+JPanel panelD = new JPanel();
+JPanel panelE= new JPanel();
+JPanel panelF = new JPanel();
+JPanel panelG = new JPanel();
+JPanel panelH= new JPanel();
+JPanel panelI = new JPanel();
+
+
+
+JFrame window = new JFrame("Profiler");
+window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+window.setResizable(false);
+
+JLabel lname,ldescription, lreason,lemployment,leducation;
+JLabel lcity,lnumber,lemail,lnotes;
+
+JButton save,load,clear;
+
+JTextField name,description, reason, employment, education;
+JTextField city, number,email;
+
+JTextArea notes = new JTextArea(20,20);
+notes.setWrapStyleWord(true);
+notes.setLineWrap(true);
+
+JScrollPane scroller = new JScrollPane(notes);
+scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+lname= new JLabel("Name", SwingConstants.RIGHT);
+ldescription = new JLabel("Description", SwingConstants.RIGHT);
+lreason = new JLabel("Reason");
+lemployment= new JLabel("Employment");
+leducation = new JLabel("Education");
+lcity= new JLabel("City");
+lnumber = new JLabel("Number");
+lemail = new JLabel("Email");
+lnotes = new JLabel("Notes");
+
+ name= new JTextField(15);
+description= new JTextField(15);
+reason= new JTextField(15);
+employment= new JTextField(15);
+education= new JTextField(15);
+city= new JTextField(15);
+number= new JTextField(15);
+email= new JTextField(15);
+
+ save = new JButton("Save");
+save.addActionListener(new ActionListener(){
+public void actionPerformed(ActionEvent e){
+
+try{
+JFileChooser fileSave = new JFileChooser();
+		fileSave.showSaveDialog(window);
+		BufferedWriter writer = new BufferedWriter(newFileWriter(fileSave.getSelectedFile())
+writer.write(name.getText()+"\n");
+writer.write(description.getText()+"\n");
+writer.write(reason.getText()+"\n");
+writer.write(employment.getText()+"\n");
+writer.write(education.getText()+"\n");
+writer.write(city.getText()+"\n");
+writer.write(number.getText()+"\n");
+writer.write(email.getText()+"\n");
+writer.write(notes.getText()+"\n");
+}writer.close();
+}
+catch(Exception ex){
+ex.printStackTrace();}
+
+}});
+
+
+
+load = new JButton("Load");
+load.addActionListener(new ActionListener(){
+public void actionPerformed(ActionEvent e){
+
+try{
+
+JFileChooser fileOpen = new JFileChooser();
+fileOpen.showSaveDialog(window);
+FileInputStream fileIn = new FileInputStream(fileOpen.getSelectedFile());
+
+ObjectInputStream is = new ObjectInputStream(fileIn);
+
+
+} catch(Exception ex){
+ex.printStackTrace();}
+
+}});
+clear = new JButton("Clear");
+
+
+panel1.setLayout(new FlowLayout(FlowLayout.TRAILING,5,5));
+panel2.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel3.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel4.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel5.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel6.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel7.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel8.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel9.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel10.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel11.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel12.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel13.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel14.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel15.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panel16.setLayout(new FlowLayout(FlowLayout.TRAILING,5,5));
+panelA.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panelB.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panelC.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panelD.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panelE.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panelF.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panelG.setLayout(new FlowLayout(FlowLayout.LEADING,5,5));
+panelH.setLayout(new BoxLayout(panelH,BoxLayout.X_AXIS));
+panelI.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
+
+
+
+
+panel1.add(lname);
+panel2.add(name);
+panel3.add(ldescription);
+panel4.add(description);
+panel5.add(lreason);
+panel6.add(reason);
+panel7.add(lemployment);
+panel8.add(employment);
+panel9.add(lcity);
+panel10.add(city);
+panel11.add(lnumber);
+panel12.add(number);
+panel13.add(lemail);
+panel14.add(email);
+panel15.add(lnotes);
+panel16.add(scroller);
+panelA.add(panel1);
+panelA.add(panel2);
+panelB.add(panel3);
+panelB.add(panel4);
+panelC.add(panel5);
+panelC.add(panel6);
+panelD.add(panel7);
+panelD.add(panel8);
+panelE.add(panel9);
+panelE.add(panel10);
+panelF.add(panel11);
+panelF.add(panel12);
+panelG.add(panel13);
+panelG.add(panel14);
+panelH.add(panel15);
+panelH.add(panel16);
+panelI.add(save);
+panelI.add(load);
+panelI.add(clear);
+
+window.setLayout(new BoxLayout (window.getContentPane(), BoxLayout.Y_AXIS));
+window.setSize(600,600);
+window.add(panelA);
+window.add(panelB);
+window.add(panelC);
+window.add(panelD);
+window.add(panelE);
+window.add(panelF);
+window.add(panelG);
+window.add(panelH);
+window.add(panelI);
+
+window.pack();
+window.setVisible(true);
+
+
+}
+
+
+public static void main(String[] args){
+Profiler4 thisProfiler = new Profiler4();
+}
+
+
+
+
+
+}
+
+
+
+
+
